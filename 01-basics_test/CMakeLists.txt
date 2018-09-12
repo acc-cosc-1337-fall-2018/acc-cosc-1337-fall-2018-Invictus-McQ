@@ -1,12 +1,6 @@
-﻿cmake_minimum_required(VERSION 3.8)
+﻿add_executable(basics_test "basics_test.cpp")
+target_link_libraries(basics_test basics_library)
 
-project("cosc1337")
-
-include_directories(inc)
-include_directories(01-basics)
-
-add_subdirectory(01-basics)
-add_subdirectory(01-basics_test)
 
 
 
