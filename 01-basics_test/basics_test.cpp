@@ -14,7 +14,7 @@ TEST_CASE("Test sum_numbers", "[1,5,10]") {
 //5, 5 to equal 25
 //10,10 to equal 100
 TEST_CASE("Test multiply_numbers", "[4, 25, 100]") {
-	REQUIRE(multiply_numbers(2, 2) == 1);
+	REQUIRE(multiply_numbers(2, 2) == 4);
 	REQUIRE(multiply_numbers(5, 5) == 25);
 	REQUIRE(multiply_numbers(10, 10) == 100);
 }
