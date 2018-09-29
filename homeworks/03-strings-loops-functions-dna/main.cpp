@@ -15,7 +15,6 @@ int main()
 	using std::cout;
 	using std::endl;
 
-
 	int point_mutation = get_point_mutations("GAGCCTACTAACGGGAT", "CATCGTAATGACGG");
 	cout << "Point Mutations:    " << endl; 
 	cout << point_mutation << endl;
