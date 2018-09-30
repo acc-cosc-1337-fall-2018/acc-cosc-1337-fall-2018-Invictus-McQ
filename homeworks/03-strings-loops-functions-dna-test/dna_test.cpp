@@ -24,7 +24,7 @@ AAAACCCGGT result should be ACCGGGTTTT
 CCCGGAAAAT result should be ATTTTCCGGG
 */
 
-TEST_CASE("Test get point mutations", "Dna strings ") {
+TEST_CASE("Test get dna complement", "Dna strings ") {
 	//test not equal in length return value of -1
 	REQUIRE(get_dna_complement("AAAACCCGGT") == "ACCGGGTTTT");
 	REQUIRE(get_dna_complement("CCCGGAAAAT") == "ATTTTCCGGG");
