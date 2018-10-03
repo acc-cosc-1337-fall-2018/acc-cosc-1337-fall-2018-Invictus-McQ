@@ -1,9 +1,14 @@
-#include "invoice_detail.h"
+#include "invoice.h"
+#include <vector>
 #include<iostream>
 
 int main()
 {	
-	InvoiceDetail invoicedetail(10,10);
-	std::cout << invoicedetail.get_extended_cost()  << std::endl;
+	Invoice invoice;
+	invoice.add_invoice_detail(InvoiceDetail(10, 10));
+	invoice.add_invoice_detail(InvoiceDetail(5, 5));
+	invoice.add_invoice_detail(InvoiceDetail(100, 2));
+
+	std::cout << invoice.get_total()  << std::endl;
 	return 0;
 }

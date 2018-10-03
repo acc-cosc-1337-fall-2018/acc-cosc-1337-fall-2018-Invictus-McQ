@@ -4,8 +4,9 @@
 class InvoiceDetail
 {
 public:
+	InvoiceDetail() = default;
 	InvoiceDetail(double c, int u): cost(c), unit(u) {}
-	double get_extended_cost();
+	double get_extended_cost() const;
 
 private:
 	double cost;
