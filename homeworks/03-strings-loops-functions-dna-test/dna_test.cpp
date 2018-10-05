@@ -28,7 +28,6 @@ TEST_CASE("Test get_dna_complement", "Dna strings ") {
 	//test not equal in length return value of -1
 	REQUIRE(get_dna_complement("AAAACCCGGT") == "ACCGGGTTTT");
 	REQUIRE(get_dna_complement("CCCGGAAAAT") == "ATTTTCCGGG");
-
 }
 
 
