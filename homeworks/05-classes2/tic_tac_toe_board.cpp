@@ -121,14 +121,14 @@ std::istream & operator>>(std::istream & in, TicTacToeBoard & d)
 
 std::ostream & operator >> (ostream& out, const TicTacToeBoard& d)
 {
-	out << '|' << pegs[0] << " || " << pegs[1] << " || " << pegs[2] << '|' << endl _
-		<< "--------------" << endl _
-		<< '|' << pegs[3] << " || " << pegs[4] << " || " << pegs[5] << '|' << endl _
-		<< "--------------" << endl _
-		<< '|' << pegs[6] << " || " << pegs[7] << " || " << pegs[8] << '|' << endl;
+	out << '|' << d.pegs[0] << " || " << d.pegs[1] << " || " << d.pegs[2] << '|' << endl
+		<< "--------------" << endl 
+		<< '|' << d.pegs[3] << " || " << d.pegs[4] << " || " << d.pegs[5] << '|' << endl 
+		<< "--------------" << endl 
+		<< '|' << d.pegs[6] << " || " << d.pegs[7] << " || " << d.pegs[8] << '|' << endl;
 }
 
-operator+(const TicTacToeBoard& b, const TicTacToeBoard& b2)
+TicTacToeBoard operator + (const TicTacToeBoard& b, const TicTacToeBoard& b2)
 {
 	TicTacToeBoard temp;
 	temp.x_win = b.x_win + b2.x_win;

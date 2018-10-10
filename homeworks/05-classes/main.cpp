@@ -23,10 +23,10 @@ int main()
 		cout << "[1]" << "[2]" << "[3]" << endl << "[4]" << "[5]" << "[6]" << endl << "[7]" << "[8]" << "[9]" << endl;
 
 		while (game.game_over() == false) {
-			std::cout << "Enter the position for " << game.get_player() << ":  ";
-			std::cin >> peg_pos;
+			cout << "Enter the position for " << game.get_player() << ":  ";
+			cin >> peg_pos;
 			game.mark_board(peg_pos);
-			std::cout << std::endl;
+			cout << endl;
 			game.display_board();
 		}
 
@@ -37,7 +37,7 @@ int main()
 		else winner = "X";
 
 		cout << "GAME OVER" << endl << endl << endl;
-		std::cout << "Congratulations! " << winner << " wins!" << std::endl;
+		cout << "Congratulations! " << winner << " wins!" << endl;
 		cout << "Would you like to play again? " << endl;
 		cout << "If yes, PRESS ENTER!" << endl << endl;
 		cout << "Otherwise, press 'q' then ENTER to quit." << endl;

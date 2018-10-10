@@ -12,17 +12,28 @@ int main()
 	TicTacToeBoard c;
 	TicTacToeBoard result;
 	vector <TicTacToeBoard> TTTBoard{ a, b , c };
+	string winner;
 
-	for (auto i : TTTBoard.size(); i++) 
+
+	for (auto& i : TTTBoard)
 	{
-		while (TTTBoard[i].game_over() == false) {
-			TTTBoard[i].mark_board(in);
+		while (i.game_over() == false)
+		{
+			i.mark_board(I.in << i);
 			cout << endl;
-			out;
+			i.out >> i;
 			{
-		result += TTTBoard[i]
-	}
-	
+				result += i;
+			}
+			if (TTTBoard[i].get_player() == "X")
+			{
+				winner = "O";
+			}
+			else winner = "X";
+
+			cout << "GAME OVER" << endl << endl << endl;
+			cout << "Congratulations! " << winner << " wins!" << endl;
+		}
 	return 0;
 }
 

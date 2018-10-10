@@ -5,21 +5,22 @@
 #include <vector>
 #include <iostream>
 
-using std::string; using std::vector;
+using std::string; using std::vector; using std::istream; using std::ostream;
+
 
 class TicTacToeBoard 
 {
 
 public:
-	TicTacToe() = default
-	TicTacToe(int x, int o, int c) : x_win(x), o_win(o), c_win(c) {}
+	TicTacToe() = default;
+	TicTacToe(int x, int o, int c) : x_win(x), o_win(o), c_win(c) {};
 	bool game_over();
 	void start_game(string player);
 	void mark_board(int position);
 	string get_player();
 	friend std::istream & operator >> (istream& in, TicTacToeBoard& d);
 	friend std::ostream & operator >> (ostream& out, const TicTacToeBoard& d);
-	friend operator+(const TicTacToeBoard& b, const TicTacToeBoard& b2);
+	friend TicTacToeBoard operator + (const TicTacToeBoard& b, const TicTacToeBoard& b2);
 private:
 	vector<string> pegs{ " ", " ", " ", " ", " ", " ", " ", " ", " " };
 	string next_player;

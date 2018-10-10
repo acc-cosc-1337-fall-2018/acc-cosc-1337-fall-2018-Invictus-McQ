@@ -3,6 +3,6 @@ add_subdirectory(03-strings-loops-functions-dna-test)
 add_subdirectory(04-vectors)
 add_subdirectory(04-vectors-test)
 add_subdirectory(05-classes) 
-add_subdirectory(05-classes-test) 
 add_subdirectory(05-classes2) 
-add_subdirectory(05-classes2-test) 
+
+
