@@ -9,11 +9,12 @@ bool TicTacToeBoard::game_over()
 		if (check_board_full() && !(check_row_win() || check_column_win() || check_diagonal_win())) {
 			c_win = 1;
 		}
-		else if (next_player == 'X')
+		else if (next_player == "X")
 		{
 			x_win = 1;
 		}
-		else if next_player == 'O' {
+		else if (next_player == "O")
+		{
 			o_win = 1;
 		}
 		return true;
@@ -116,16 +117,20 @@ std::istream & operator>>(std::istream & in, TicTacToeBoard & d)
 
 	std::cout << "Enter the position for " << d.get_player() << ":  ";
 	in >> x;
+	d.mark_board(x);
 	return in;
+		
 }
 
-std::ostream & operator >> (ostream& out, const TicTacToeBoard& d)
+std::ostream & operator << (ostream& out, const TicTacToeBoard& d)
 {
-	out << '|' << d.pegs[0] << " || " << d.pegs[1] << " || " << d.pegs[2] << '|' << endl
+	out << "|" << d.pegs[0] << " || " << d.pegs[1] << " || " << d.pegs[2] << "|" << endl 
 		<< "--------------" << endl 
-		<< '|' << d.pegs[3] << " || " << d.pegs[4] << " || " << d.pegs[5] << '|' << endl 
+		<< "|" << d.pegs[3] << " || " << d.pegs[4] << " || " << d.pegs[5] << "|" << endl 
 		<< "--------------" << endl 
-		<< '|' << d.pegs[6] << " || " << d.pegs[7] << " || " << d.pegs[8] << '|' << endl;
+		<< "|" << d.pegs[6] << " || " << d.pegs[7] << " || " << d.pegs[8] << "|" << endl;
+
+	return out;
 }
 
 TicTacToeBoard operator + (const TicTacToeBoard& b, const TicTacToeBoard& b2)

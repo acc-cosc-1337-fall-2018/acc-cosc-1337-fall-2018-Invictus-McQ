@@ -19,13 +19,13 @@ int main()
 	{
 		while (i.game_over() == false)
 		{
-			i.mark_board(I.in << i);
+			cin >> i;
 			cout << endl;
-			i.out >> i;
+			cout << i;
 			{
-				result += i;
+				result = result + i;
 			}
-			if (TTTBoard[i].get_player() == "X")
+			if (i.get_player() == "X")
 			{
 				winner = "O";
 			}
@@ -34,8 +34,10 @@ int main()
 			cout << "GAME OVER" << endl << endl << endl;
 			cout << "Congratulations! " << winner << " wins!" << endl;
 		}
+	}
 	return 0;
 }
+
 
 
 	

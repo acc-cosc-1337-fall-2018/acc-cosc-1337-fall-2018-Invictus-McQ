@@ -12,14 +12,14 @@ class TicTacToeBoard
 {
 
 public:
-	TicTacToe() = default;
-	TicTacToe(int x, int o, int c) : x_win(x), o_win(o), c_win(c) {};
+	TicTacToeBoard() = default;
+	TicTacToeBoard(int x, int o, int c) : x_win(x), o_win(o), c_win(c) {};
 	bool game_over();
 	void start_game(string player);
 	void mark_board(int position);
 	string get_player();
 	friend std::istream & operator >> (istream& in, TicTacToeBoard& d);
-	friend std::ostream & operator >> (ostream& out, const TicTacToeBoard& d);
+	friend std::ostream & operator << (ostream& out, const TicTacToeBoard& d);
 	friend TicTacToeBoard operator + (const TicTacToeBoard& b, const TicTacToeBoard& b2);
 private:
 	vector<string> pegs{ " ", " ", " ", " ", " ", " ", " ", " ", " " };
