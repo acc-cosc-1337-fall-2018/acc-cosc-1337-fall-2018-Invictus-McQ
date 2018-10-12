@@ -6,7 +6,7 @@ class InvoiceDetail
 {
 public:
 	InvoiceDetail() = default;
-	InvoiceDetail(double c, int u): cost(c), unit(u) {}
+	InvoiceDetail(double c, int u) : cost(c), unit(u) {}
 	double get_extended_cost() const;
 	friend std::istream & operator>>(std::istream& in, InvoiceDetail& d);
 

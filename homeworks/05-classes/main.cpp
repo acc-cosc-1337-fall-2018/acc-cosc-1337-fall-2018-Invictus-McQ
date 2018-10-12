@@ -43,6 +43,12 @@ int main()
 		cout << "Otherwise, press 'q' then ENTER to quit." << endl;
 		cin >> play_again;
 
+		if (play_again != "q") {
+			game.start_game("X");
+			game.display_board();
+			TicTacToeBoard game;
+		}
+
 	}
 	return 0;
 }

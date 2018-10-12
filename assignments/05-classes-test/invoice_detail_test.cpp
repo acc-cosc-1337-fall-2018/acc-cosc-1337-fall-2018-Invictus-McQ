@@ -1,7 +1,8 @@
 #define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
 #include "catch.hpp"
-#include "05-classes/invoice.h" //also included invoice_detail
-#include "05-classes/invoice_utility.h"
+#include "invoice.h" //also included invoice_detail
+#include "invoice_utility.h"
+#include "invoice_progress.h"
 
 TEST_CASE("Test InvoiceDetail class")
 {
@@ -42,7 +43,6 @@ TEST_CASE("Test invoice operator overloading")
 
 }
 
-
 TEST_CASE("Test invoice_utility get_total() function")
 {
 
@@ -51,4 +51,11 @@ TEST_CASE("Test invoice_utility get_total() function")
 
 	REQUIRE(inv.get_total() == 125);
 
+}
+
+TEST_CASE("Test invoice get_total with InvoiceProgress")
+{
+	InvoiceProgress inv(250);
+	inv.add_invoice_detail(InvoiceDetail(100, 1));
+	REQUIRE(inv.get_total() == 150);
 }

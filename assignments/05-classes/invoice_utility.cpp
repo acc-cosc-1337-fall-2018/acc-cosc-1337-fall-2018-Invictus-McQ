@@ -2,5 +2,5 @@
 
 double InvoiceUtility::get_total()const
 {
-	return Invoice:get_total() + fixed_costs;
+	return Invoice::get_total() + fixed_costs;
 }
