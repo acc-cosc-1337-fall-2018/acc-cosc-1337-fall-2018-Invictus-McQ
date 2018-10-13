@@ -2,14 +2,14 @@
 #include "catch.hpp"
 #include "dna.h"
 
-TEST_CASE("Test round with precision")
+TEST_CASE("Test round_to_precision")
 {
 	REQUIRE(round_to_precision(55.95963, 2) == 55.96);
 	REQUIRE(round_to_precision(55.95463, 2) == 55.95);
 }
 
 
-TEST_CASE("Test get point mutations", "Dna strings ") {
+TEST_CASE("Test get_point_mutations", "Dna strings ") {
 	//test not equal in length return value of -1
 	REQUIRE(get_point_mutations("GAGCCTACTAACGGGAT", "CATCGTAATGACGG") == -1);
 	REQUIRE(get_point_mutations("GAGCCTACTAACGGGAT", "GAGCCTACTAACGGGAT") == 0);
@@ -24,11 +24,10 @@ AAAACCCGGT result should be ACCGGGTTTT
 CCCGGAAAAT result should be ATTTTCCGGG
 */
 
-TEST_CASE("Test get dna complement", "Dna strings ") {
+TEST_CASE("Test get_dna_complement", "Dna strings ") {
 	//test not equal in length return value of -1
 	REQUIRE(get_dna_complement("AAAACCCGGT") == "ACCGGGTTTT");
 	REQUIRE(get_dna_complement("CCCGGAAAAT") == "ATTTTCCGGG");
-
 }
 
 
@@ -39,7 +38,7 @@ GATGGAACTTGACTACGTAAATT result should be GAUGGAACUUGACUACGUAAAUU
 AAATTGATCTTGACTACGTGGAA result should be AAAUUGAUCUUGACUACGUGGAA
 
 */
-TEST_CASE("Test get rna transcription", "Dna strings ") {
+TEST_CASE("Test transcribe_dna_into_rna", "Dna strings ") {
 	//test not equal in length return value of -1
 	REQUIRE(transcribe_dna_into_rna("GATGGAACTTGACTACGTAAATT") == "GAUGGAACUUGACUACGUAAAUU");
 	REQUIRE(transcribe_dna_into_rna("AAATTGATCTTGACTACGTGGAA") == "AAAUUGAUCUUGACUACGUGGAA");
@@ -50,7 +49,7 @@ TEST_CASE("Test get rna transcription", "Dna strings ") {
 /*create a test case for function get_gc_content with arguments
 CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGACTGGGAACCTGCGGGCAGTAGGTGGAAT
 the result should be 60.92*/
-TEST_CASE("Test get gc content")
+TEST_CASE("Test get_gc_content")
 {
 	REQUIRE(get_gc_content("CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGACTGGGAACCTGCGGGCAGTAGGTGGAAT") == 60.92);
 }
