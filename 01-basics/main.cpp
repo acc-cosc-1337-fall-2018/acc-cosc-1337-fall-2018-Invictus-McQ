@@ -17,7 +17,8 @@ int main()
 
 	func();
 
-	/*int num{ 5 };
+	/*
+	int num{ 5 };
 	int& num_ref = num; //reference
 	int* ptr_num; //pointer
 	ptr_num = &num_ref;
