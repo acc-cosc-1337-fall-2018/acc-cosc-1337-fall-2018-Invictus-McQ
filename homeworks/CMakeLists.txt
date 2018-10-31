@@ -4,5 +4,5 @@ add_subdirectory(04-vectors)
 add_subdirectory(04-vectors-test)
 add_subdirectory(05-classes) 
 add_subdirectory(05-classes2) 
-
-
+add_subdirectory(05-classes3) 
+add_subdirectory(05-classes3-test) 
