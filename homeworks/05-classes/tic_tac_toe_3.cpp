@@ -1,12 +1,11 @@
 #include "tic_tac_toe_3.h"
 
-void TicTacToe3::display_board(std::ostream& out) const
+void TicTacToe3::display_board(ostream& out) const
 {
 	for (unsigned i = 0; i < pegs.size(); i += 3)
 	{
 		out << pegs[i].val << "|" << pegs[i + 1].val << "|" << pegs[i + 2].val << std::endl;
 	}
-	out << x_win << o_win << c_win << std::endl;
 }
 
 bool TicTacToe3::check_column_win() const
@@ -46,7 +45,9 @@ bool TicTacToe3::check_diagonal_win() const
 void TicTacToe3::get_input(std::istream & in)
 {
 	int position;
-	std::cout << "Enter position (1-9): ";
+	std::cout << "Player " << get_player() << 
+				", please choose between 1 and 9 to mark your " 
+				<< get_player() << ": ";
 	in >> position;
 	mark_board(position);
 }

@@ -1,34 +1,37 @@
-#ifndef TTT_BOARD_H
-#define TTT_BOARD_H
+﻿#ifndef TIC_TAC_TOE_BOARD_H
+#define TIC_TAC_TOE_BOARD_H
 
-#include <string>
 #include <vector>
 #include <iostream>
+#include <string>
+#include "peg.h"
 
-using std::string; using std::vector;
+using std::vector; using std::string; using std::istream; using std::ostream;
 
-class TicTacToeBoard 
+class TicTacToeBoard
 {
-
 public:
+	TicTacToeBoard() = default;
 	bool game_over();
-	void start_game(string player);
-	void mark_board(int position);
-	string get_player();
-	void display_board();
+	void start_game(const string player) { next_player = player; clear_board(); }
+	void mark_board(const int position) { pegs[position - 1].val = next_player; set_next_player(); }
+	string get_player() const;
+	string get_winner() const;
+	friend istream& operator>>(istream& in, TicTacToeBoard& d);
+	friend ostream& operator<<(ostream& out, const TicTacToeBoard& d);
 
-private:
-	vector<string> pegs{ " ", " ", " ", " ", " ", " ", " ", " ", " " };
-	string next_player;
+protected:
+	virtual bool check_column_win() const = 0;
+	virtual bool check_row_win()const = 0;
+	virtual bool check_diagonal_win()const = 0;
+	virtual void display_board(ostream& o) const = 0;
+	virtual void get_input(istream& in) = 0;
 	void set_next_player();
-	bool check_column_win();
-	bool check_row_win();
-	bool check_diagonal_win();
+	bool check_board_full() const;
 	void clear_board();
-	bool check_board_full();
-	
+	vector<Peg> pegs;
+	string next_player;
+	string winner;
 };
 
-#endif // TTT_BOARD_H
-
-
+#endif // !TIC_TAC_TOE_BOARD_H

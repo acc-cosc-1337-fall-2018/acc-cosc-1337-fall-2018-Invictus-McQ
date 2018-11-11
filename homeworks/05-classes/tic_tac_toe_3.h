@@ -9,9 +9,10 @@ public:
 	TicTacToe3();
 protected:
 	void display_board(std::ostream& out) const override;
-	bool check_column_win() const;
-	bool check_row_win() const;
-	bool check_diagonal_win() const;
+	bool check_column_win() const override;
+	bool check_row_win() const override;
+	bool check_diagonal_win() const override;
 	void get_input(std::istream& in) override;
 };
 #endif //TIC_TIC_TOE_3_H
+

@@ -1,57 +1,47 @@
-#include "tic_tac_toe_board.h"
+#include <iostream>
+#include <string>
+#include <vector>
+#include "tic_tac_toe_manager.h"
 
-
-using std::endl; using std::cout; using std::cin; using std::string;
-
+using std::unique_ptr; using std::make_unique;
 
 int main()
 {
+	int choice{ 1 };
 
-	string play_again = "y";
-	int peg_pos = 0;
-	bool endgame = false;
-	string winner;
-	cout << "It's Kevin's super simple Tic-Tac-Toe! Have fun! OR ELSE!" << endl;
-
-	TicTacToeBoard game;
-	game.start_game("X");
-	game.display_board();
-	while (play_again != "q")
+	do
 	{
+		int t3ort4;
+		std::cout << "Which game?  3 x 3 or 4 x 4? ";
+		std::cin >> t3ort4;
 
-		cout << "These are the peg positions on the board (1 to 9)" << endl;
-		cout << "[1]" << "[2]" << "[3]" << endl << "[4]" << "[5]" << "[6]" << endl << "[7]" << "[8]" << "[9]" << endl;
+		unique_ptr<TicTacToeBoard> board;
 
-		while (game.game_over() == false) {
-			cout << "Enter the position for " << game.get_player() << ":  ";
-			cin >> peg_pos;
-			game.mark_board(peg_pos);
-			cout << endl;
-			game.display_board();
-		}
-
-		if (game.get_player() == "X") 
+		if (t3ort4 == 3)
 		{
-			winner = "O";
+			board = std::make_unique<TicTacToe3>();
 		}
-		else winner = "X";
-
-		cout << "GAME OVER" << endl << endl << endl;
-		cout << "Congratulations! " << winner << " wins!" << endl;
-		cout << "Would you like to play again? " << endl;
-		cout << "If yes, PRESS ENTER!" << endl << endl;
-		cout << "Otherwise, press 'q' then ENTER to quit." << endl;
-		cin >> play_again;
-
-		if (play_again != "q") {
-			game.start_game("X");
-			game.display_board();
-			TicTacToeBoard game;
+		else
+		{
+			board = std::make_unique<TicTacToe4>();
 		}
 
-	}
+		std::string player;
+		std::cout << "Enter first player X or O: ";
+		std::cin >> player;
+
+		board -> start_game(player);
+
+		while (!board->game_over())
+		{
+			std::cin >> *board;
+			std::cout << *board;
+		}
+
+		std::cout << "Enter 1 to play again OR any other number to exit";
+		std::cin >> choice;
+
+	} while (choice == 1);
 	return 0;
 }
 
-
-	
