@@ -2,7 +2,13 @@
 
 ostream & operator<<(ostream & out, const TicTacToeManager & m)
 {
-	m.display_board(out);
+	for (auto& board : m.boards) 
+	{
+		out << *board;
+	}
+	
+	out << m.x_win << " " << m.o_win << " " << m.c_win;
+
 	return out; 
 }
 
@@ -20,6 +26,7 @@ unique_ptr<TicTacToeBoard> TicTacToeManager::get_game(GameType game_type)
 
 void TicTacToeManager::save_game(unique_ptr<TicTacToeBoard> board)
 {
+	update_winner_count(board->get_winner());
 	boards.push_back(std::move(board));
 }
 

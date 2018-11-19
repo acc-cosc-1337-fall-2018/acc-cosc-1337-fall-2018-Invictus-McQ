@@ -9,6 +9,8 @@ int main()
 {
 	int choice{ 1 };
 
+	unique_ptr<TicTacToeManager> manager = make_unique<TicTacToeManager>();
+
 	do
 	{
 		int t3ort4;
@@ -17,13 +19,13 @@ int main()
 
 		unique_ptr<TicTacToeBoard> board;
 
-		if (t3ort4 == 3)
+		if (t3ort4 == tic_tac_toe_3)
 		{
-			board = std::make_unique<TicTacToe3>();
+			board = manager->get_game(tic_tac_toe_3);
 		}
 		else
 		{
-			board = std::make_unique<TicTacToe4>();
+			board = manager->get_game(tic_tac_toe_4);
 		}
 
 		std::string player;
@@ -37,6 +39,8 @@ int main()
 			std::cin >> *board;
 			std::cout << *board;
 		}
+
+		manager->save_game(move(board));
 
 		std::cout << "Enter 1 to play again OR any other number to exit";
 		std::cin >> choice;

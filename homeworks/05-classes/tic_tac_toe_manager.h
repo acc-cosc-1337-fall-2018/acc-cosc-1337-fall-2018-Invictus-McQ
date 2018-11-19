@@ -11,11 +11,11 @@ using std::ostream; using std::istream;
 
 
 enum GameType {
-	tic_tac_toe_3,
-	tic_tac_toe_t4
+	tic_tac_toe_3 = 3,
+	tic_tac_toe_4 = 4
 };
 
-class TicTacToeManager : public TicTacToeBoard
+class TicTacToeManager
 {
 public:
 	TicTacToeManager() = default;
