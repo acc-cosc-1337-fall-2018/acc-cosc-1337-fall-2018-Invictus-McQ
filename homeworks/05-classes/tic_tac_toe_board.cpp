@@ -34,6 +34,11 @@ string TicTacToeBoard::get_winner() const
 
 }
 
+const vector<Peg>& TicTacToeBoard::get_pegs()
+{
+	return pegs;
+}
+
 void TicTacToeBoard::clear_board()
 {
 	for (auto& peg : pegs)

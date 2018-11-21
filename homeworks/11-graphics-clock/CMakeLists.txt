@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(gui_tic_tac_toe)
+project(grahics_clock)
 
 set(CMAKE_CXX_STANDARD 11)
 
@@ -13,8 +13,12 @@ if(wxWidgets_FOUND)
 	include(${wxWidgets_USE_FILE})
 
 	set(SOURCE_FILES main.cpp app.h app.cpp frame.h frame.cpp 
-	                 panel.h panel.cpp)
-
-	add_executable(gui_tic_tac_toe_exe WIN32 ${SOURCE_FILES})
-	target_link_libraries(gui_tic_tac_toe_exe ${wxWidgets_LIBRARIES} tic_tac_toe_library)
+	                 panel.h panel.cpp point.h shape.h shape.cpp 
+					 text.h text.cpp circle.h circle.cpp
+					 line.h line.cpp clock.h clock.cpp
+					 clock_graphic.h clock_graphic.cpp)
+	
+	add_executable(graphics_clock WIN32 ${SOURCE_FILES})
+	target_link_libraries(graphics_clock ${wxWidgets_LIBRARIES})
 endif()
+

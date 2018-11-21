@@ -19,6 +19,7 @@ public:
 	string get_winner() const;
 	friend istream& operator>>(istream& in, TicTacToeBoard& d);
 	friend ostream& operator<<(ostream& out, const TicTacToeBoard& d);
+	const vector<Peg>& get_pegs();
 
 protected:
 	virtual bool check_column_win() const = 0;

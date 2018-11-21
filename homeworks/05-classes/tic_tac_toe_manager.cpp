@@ -2,11 +2,19 @@
 
 ostream & operator<<(ostream & out, const TicTacToeManager & m)
 {
-	m.display_board(out);
+	out << "History by Player:\n\n\n";
+
+	for (int i = 0; i < m.boards.size(); ++i)
+	{
+		out << *m.boards[i];
+	}
+	out << "X wins: " << m.x_win 
+		<< "\nO wins: " << m.o_win 
+		<< "\nC wins: " << m.c_win;
 	return out; 
 }
 
-unique_ptr<TicTacToeBoard> TicTacToeManager::get_game(GameType game_type)
+unique_ptr<TicTacToeBoard> TicTacToeManager::get_games(GameType game_type)
 {
 	unique_ptr<TicTacToeBoard> a;
 	if (game_type == tic_tac_toe_3) {
@@ -22,6 +30,12 @@ void TicTacToeManager::save_game(unique_ptr<TicTacToeBoard> board)
 {
 	boards.push_back(std::move(board));
 }
+
+const vector<unique_ptr<TicTacToeManager>>& TicTacToeManager::get_games()
+{
+	return boards;
+}
+
 
 void TicTacToeManager::update_winner_count(string& winner)
 {
