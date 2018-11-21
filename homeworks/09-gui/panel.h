@@ -3,11 +3,9 @@
 
 #include<wx/wx.h>
 #include "tic_tac_toe_manager.h"
-
 #include<memory>
 #include<vector>
 #include<string>
-
 
 using std::unique_ptr;
 
@@ -34,7 +32,6 @@ private:
 
 	unique_ptr<TicTacToeManager> manager;
 	unique_ptr<TicTacToeBoard> board;
-
 };
 
 #endif // !PANEL_H

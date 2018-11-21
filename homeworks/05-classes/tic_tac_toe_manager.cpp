@@ -1,5 +1,8 @@
 #include "tic_tac_toe_manager.h"
 
+using std::make_unique;
+
+
 ostream & operator<<(ostream & out, const TicTacToeManager & m)
 {
 	out << "History by Player:\n\n\n";
@@ -16,14 +19,14 @@ ostream & operator<<(ostream & out, const TicTacToeManager & m)
 
 unique_ptr<TicTacToeBoard> TicTacToeManager::get_game(GameType game_type)
 {
-	unique_ptr<TicTacToeBoard> a;
+	unique_ptr<TicTacToeBoard> b;
 	if (game_type == tic_tac_toe_3) {
-		a = std::make_unique<TicTacToe3>();
+		b = make_unique<TicTacToe3>();
 	}
 	else {
-		a = std::make_unique<TicTacToe4>();
+		b = make_unique<TicTacToe4>();
 	}
-	return a; 
+	return b; 
 }
 
 void TicTacToeManager::save_game(unique_ptr<TicTacToeBoard> board)
@@ -32,25 +35,25 @@ void TicTacToeManager::save_game(unique_ptr<TicTacToeBoard> board)
 	boards.push_back(std::move(board));
 }
 
-const vector<unique_ptr<TicTacToeManager>>& TicTacToeManager::get_games()
+const vector<unique_ptr<TicTacToeBoard>>& TicTacToeManager::get_games()
 {
 	return boards;
 }
 
 
-void TicTacToeManager::update_winner_count(string winner)
+void TicTacToeManager::update_winner_count(string& winner)
 {
 	if (winner == "X")
 	{
-		++x_win;
+		x_win++;
 	}
 	else if (winner == "O")
 	{
-		++o_win;
+		o_win++;
 	}
 	else
 	{
-		++c_win;
+		c_win++;
 	}
 
 

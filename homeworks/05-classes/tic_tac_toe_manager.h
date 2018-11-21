@@ -15,16 +15,16 @@ enum GameType {
 	tic_tac_toe_4
 };
 
-class TicTacToeManager : public TicTacToeBoard
+class TicTacToeManager
 {
 public:
 	unique_ptr<TicTacToeBoard> get_game(GameType game_type);
 	void save_game(unique_ptr<TicTacToeBoard> board);
 	friend ostream& operator <<(ostream& out, const TicTacToeManager& m);
-	const vector<unique_ptr<TicTacToeManager>>& get_games();
+	const vector<unique_ptr<TicTacToeBoard>>& get_games();
 private:
 	vector<unique_ptr<TicTacToeBoard>> boards;
-	void update_winner_count(string winner);
+	void update_winner_count(string& winner);
 	int x_win{ 0 };
 	int o_win{ 0 };
 	int c_win{ 0 };

@@ -13,18 +13,18 @@ class TicTacToeBoard
 public:
 	TicTacToeBoard() = default;
 	bool game_over();
-	void start_game(const string player);
-	void mark_board(const int position);
-	string get_player() const;
-	string get_winner() const;
+	void start_game(string player);
+	void mark_board(int position);
+	string get_player();
+	string get_winner();
 	friend istream& operator>>(istream& in, TicTacToeBoard& d);
 	friend ostream& operator<<(ostream& out, const TicTacToeBoard& d);
 	const vector<Peg>& get_pegs();
 
 protected:
 	virtual bool check_column_win() const = 0;
-	virtual bool check_row_win()const = 0;
-	virtual bool check_diagonal_win()const = 0;
+	virtual bool check_row_win() const = 0;
+	virtual bool check_diagonal_win() const = 0;
 	virtual void display_board(ostream& o) const = 0;
 	virtual void get_input(istream& in) = 0;
 	void set_next_player();

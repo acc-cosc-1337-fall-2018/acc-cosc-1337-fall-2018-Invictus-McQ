@@ -8,7 +8,7 @@ void TicTacToeBoard::set_next_player()
 		next_player = "X";
 }
 
- string TicTacToeBoard::get_player() const
+ string TicTacToeBoard::get_player() 
 {
 	return next_player;
 }
@@ -26,7 +26,7 @@ bool TicTacToeBoard::check_board_full() const
 
 }
 
-string TicTacToeBoard::get_winner() const
+string TicTacToeBoard::get_winner() 
 {
 	if (check_column_win() || check_row_win() || check_diagonal_win())
 	{
@@ -90,13 +90,13 @@ bool TicTacToeBoard::game_over()
 	
 }
 
-void TicTacToeBoard::start_game(const string player)
+void TicTacToeBoard::start_game(string player)
 {
 	next_player = player;
 	clear_board();
 }
 
-void TicTacToeBoard::mark_board(const int position)
+void TicTacToeBoard::mark_board(int position)
 { 
 	pegs[position - 1].val = next_player; 
 	set_next_player(); 

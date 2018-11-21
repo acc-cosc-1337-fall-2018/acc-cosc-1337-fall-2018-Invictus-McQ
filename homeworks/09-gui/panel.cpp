@@ -1,5 +1,7 @@
 #include "panel.h"
 
+using std::make_unique;
+
 /*
 Class Constructor
 
@@ -12,11 +14,10 @@ Panel::Panel(wxWindow* parent)
 	: wxPanel(parent, -1)
 {
 	//Create an instance of unique_ptr<TicTacToeManager> using std::make_unique 
-	manager = std::make_unique<TicTacToeManager>();
+	manager = make_unique<TicTacToeManager>();
 
 	auto vbox = new wxBoxSizer(wxVERTICAL);
 	auto top_horizontal_box = get_top_box_sizer();
-
 	auto mid_horizontal_box = get_mid_box_sizer();
 	tic_tac_toe_grid_3 = get_grid_sizer(3);
 	tic_tac_toe_grid_3->Show(false);
@@ -212,7 +213,7 @@ void Panel::on_listbox_clk(wxCommandEvent& event)
 	
 	wxGridSizer* sizer;
 
-	if (board->get_pegs().size() == 9) 
+	if (manager->get_games()[history_list_box->GetSelection()]->get_pegs().size() == 9)
 	{
 		sizer = tic_tac_toe_grid_3;
 		tic_tac_toe_grid_4->Show(false);
@@ -229,7 +230,7 @@ void Panel::on_listbox_clk(wxCommandEvent& event)
 	int i = 1;
 	for (auto item : sizer->GetChildren())
 	{	//call board get_pegs[i-1] and call the val data member
-		item->GetWindow()->SetLabel(board->get_pegs()[i-1].val);
+		item->GetWindow()->SetLabel(manager->get_games()[history_list_box->GetSelection()]->get_pegs()[i - 1].val);
 		item->GetWindow()->Disable();
 		i++;
 	}
