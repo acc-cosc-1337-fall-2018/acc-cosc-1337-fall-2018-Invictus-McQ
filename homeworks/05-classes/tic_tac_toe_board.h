@@ -13,8 +13,8 @@ class TicTacToeBoard
 public:
 	TicTacToeBoard() = default;
 	bool game_over();
-	void start_game(const string player) { next_player = player; clear_board(); }
-	void mark_board(const int position) { pegs[position - 1].val = next_player; set_next_player(); }
+	void start_game(const string player);
+	void mark_board(const int position);
 	string get_player() const;
 	string get_winner() const;
 	friend istream& operator>>(istream& in, TicTacToeBoard& d);

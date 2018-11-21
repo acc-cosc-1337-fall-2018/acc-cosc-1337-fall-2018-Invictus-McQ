@@ -2,7 +2,7 @@
 
 void TicTacToe4::display_board(std::ostream& out) const
 {
-	for (unsigned i = 0; i < pegs.size(); i += 4)
+	for (int i = 0; i < pegs.size(); i += 4)
 	{
 		out << pegs[i].val << "|" << pegs[i + 1].val << "|" << pegs[i + 2].val 
 			<< "|" << pegs[i + 3].val << std::endl;
@@ -45,18 +45,18 @@ bool TicTacToe4::check_diagonal_win() const
 
 void TicTacToe4::get_input(std::istream & in)
 {
-	int position;
+	int pos;
 	std::cout << "Enter position (1-16): ";
-	in >> position;
-	mark_board(position);
+	in >> pos;
+	mark_board(pos);
 }
 
 TicTacToe4::TicTacToe4()
 {
 	for (int i = 0; i < 16; i++)
 	{
-		Peg peg;
-		pegs.push_back(peg);
+		Peg p;
+		pegs.push_back(p);
 	}
 
 

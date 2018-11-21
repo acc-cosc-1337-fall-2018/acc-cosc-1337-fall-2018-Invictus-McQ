@@ -12,15 +12,13 @@ void TicTacToeBoard::set_next_player()
 {
 	return next_player;
 }
-	
 
 bool TicTacToeBoard::check_board_full() const
 {
-
-
 	for (auto peg : pegs)
 	{
-		if( peg.val == " ") {
+		if( peg.val == " ") 
+		{
 			return false;
 		}
 	}
@@ -30,8 +28,25 @@ bool TicTacToeBoard::check_board_full() const
 
 string TicTacToeBoard::get_winner() const
 {
-	return winner;
-
+	if (check_column_win() || check_row_win() || check_diagonal_win())
+	{
+		if (next_player == "O")
+		{
+			return "X";
+		}
+		else
+		{
+			return "O";
+		}
+	}
+	if (check_board_full())
+	{
+		return "C";
+	}
+	else
+	{
+		return "E";
+	}
 }
 
 const vector<Peg>& TicTacToeBoard::get_pegs()
@@ -42,7 +57,10 @@ const vector<Peg>& TicTacToeBoard::get_pegs()
 void TicTacToeBoard::clear_board()
 {
 	for (auto& peg : pegs)
+	{ 
 		peg.val = " ";
+	}
+		
 }
 
 istream & operator>>(istream & in, TicTacToeBoard & board)
@@ -60,24 +78,26 @@ ostream & operator<<(ostream & out, const TicTacToeBoard & board)
 bool TicTacToeBoard::game_over()
 {
 	if (check_column_win() || check_row_win() || check_diagonal_win() || check_board_full())
+		return true;
+	
+	if (check_board_full())
 	{
-		if (check_board_full() == true)
-		{
-			winner = "C";
-			return true;
-		}
-		else if (next_player == "X")
-		{
-			winner = "O";
-			return true;
-		}
-		else
-		{
-			winner = "X";
-			return true;
-		}
+		return true;
 	}
-	return false;
+		else
+			return false;
 
 	
+}
+
+void TicTacToeBoard::start_game(const string player)
+{
+	next_player = player;
+	clear_board();
+}
+
+void TicTacToeBoard::mark_board(const int position)
+{ 
+	pegs[position - 1].val = next_player; 
+	set_next_player(); 
 }

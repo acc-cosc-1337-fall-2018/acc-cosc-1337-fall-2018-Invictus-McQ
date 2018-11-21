@@ -14,7 +14,7 @@ ostream & operator<<(ostream & out, const TicTacToeManager & m)
 	return out; 
 }
 
-unique_ptr<TicTacToeBoard> TicTacToeManager::get_games(GameType game_type)
+unique_ptr<TicTacToeBoard> TicTacToeManager::get_game(GameType game_type)
 {
 	unique_ptr<TicTacToeBoard> a;
 	if (game_type == tic_tac_toe_3) {
@@ -28,6 +28,7 @@ unique_ptr<TicTacToeBoard> TicTacToeManager::get_games(GameType game_type)
 
 void TicTacToeManager::save_game(unique_ptr<TicTacToeBoard> board)
 {
+	update_winner_count(board->get_winner());
 	boards.push_back(std::move(board));
 }
 
@@ -37,19 +38,19 @@ const vector<unique_ptr<TicTacToeManager>>& TicTacToeManager::get_games()
 }
 
 
-void TicTacToeManager::update_winner_count(string& winner)
+void TicTacToeManager::update_winner_count(string winner)
 {
 	if (winner == "X")
 	{
-		x_win++;
+		++x_win;
 	}
 	else if (winner == "O")
 	{
-		o_win++;	
+		++o_win;
 	}
 	else
 	{
-		c_win++;
+		++c_win;
 	}
 
 

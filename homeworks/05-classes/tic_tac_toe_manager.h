@@ -24,11 +24,10 @@ public:
 	const vector<unique_ptr<TicTacToeManager>>& get_games();
 private:
 	vector<unique_ptr<TicTacToeBoard>> boards;
+	void update_winner_count(string winner);
 	int x_win{ 0 };
 	int o_win{ 0 };
 	int c_win{ 0 };
-	void update_winner_count(string& winner);
-
 };
 
 
