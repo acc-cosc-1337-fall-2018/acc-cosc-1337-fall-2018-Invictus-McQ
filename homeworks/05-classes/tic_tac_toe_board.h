@@ -12,6 +12,8 @@ class TicTacToeBoard
 {
 public:
 	TicTacToeBoard() = default;
+	TicTacToeBoard(vector<Peg> p) : pegs(p) {}
+
 	bool game_over();
 	void start_game(string player);
 	void mark_board(int position);

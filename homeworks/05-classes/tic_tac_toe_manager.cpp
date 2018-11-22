@@ -2,7 +2,6 @@
 
 using std::make_unique;
 
-
 ostream & operator<<(ostream & out, const TicTacToeManager & m)
 {
 	out << "History by Player:\n\n\n";
@@ -40,7 +39,6 @@ const vector<unique_ptr<TicTacToeBoard>>& TicTacToeManager::get_games()
 	return boards;
 }
 
-
 void TicTacToeManager::update_winner_count(string& winner)
 {
 	if (winner == "X")
@@ -55,6 +53,11 @@ void TicTacToeManager::update_winner_count(string& winner)
 	{
 		c_win++;
 	}
+}
 
-
+void TicTacToeManager::get_winner_totals(int & x, int & o, int & c)
+{
+	x = x_win;
+	o = o_win;
+	c = c_win;
 }

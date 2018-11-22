@@ -22,6 +22,7 @@ public:
 	void save_game(unique_ptr<TicTacToeBoard> board);
 	friend ostream& operator <<(ostream& out, const TicTacToeManager& m);
 	const vector<unique_ptr<TicTacToeBoard>>& get_games();
+	void get_winner_totals(int& x, int& o, int& c);
 private:
 	vector<unique_ptr<TicTacToeBoard>> boards;
 	void update_winner_count(string& winner);
