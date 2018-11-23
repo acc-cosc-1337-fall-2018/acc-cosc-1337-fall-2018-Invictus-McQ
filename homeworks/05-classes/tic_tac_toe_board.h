@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <iostream>
-#include <string>
+
 #include "peg.h"
 
 using std::vector; using std::string; using std::istream; using std::ostream;
