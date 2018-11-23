@@ -13,9 +13,9 @@ class TicTacToeData
 {
 public:
 	vector<unique_ptr<TicTacToeBoard>> get_games();
-	void save_pegs(vector<Peg>& p);
+	void save_pegs(const vector<Peg>& p);
 private:
-	string file_name{ "tic_tac_toe.txt" };
+	const string file_name{ "tic_tac_toe_data.dat" };
 	vector<string> pegs;
 };
 

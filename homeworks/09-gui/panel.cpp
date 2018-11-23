@@ -1,5 +1,7 @@
 #include "panel.h"
 
+using std::to_string; using std::make_unique;
+
 /*
 Class Constructor
 
@@ -8,7 +10,7 @@ Class Constructor
 Panel::Panel(wxWindow* parent) 
 	: wxPanel(parent, -1)
 {
-	manager = std::make_unique<TicTacToeManager>();
+	manager = make_unique<TicTacToeManager>();
 
 	auto vbox = new wxBoxSizer(wxVERTICAL);
 	auto top_horizontal_box = get_top_box_sizer();
@@ -19,8 +21,11 @@ Panel::Panel(wxWindow* parent)
 	tic_tac_toe_grid_4 = get_grid_sizer(4);
 	tic_tac_toe_grid_4->Show(false);
 
-	//add code here to iterate manager get_games vector and append a value
-	//to history_list_box for each game in vector
+	//add code here to iterate manager get_games vector and append a value to history_list_box for each game in vector
+	for (auto& i : manager->get_games())
+	{
+		history_list_box->Append("game");
+	}
 
 	vbox->Add(top_horizontal_box, 0, wxEXPAND | wxLEFT | wxRIGHT | wxTOP, 10);
 	vbox->Add(mid_horizontal_box, 0, wxEXPAND | wxLEFT | wxRIGHT | wxTOP, 10);
@@ -116,7 +121,7 @@ wxGridSizer * Panel::get_grid_sizer(int size)
 
 	for (int i = 0; i < size*size; i++) 
 	{
-		auto btn = new wxButton(this, -1, std::to_string(i+1));
+		auto btn = new wxButton(this, -1, to_string(i+1));
 		btn->Bind(wxEVT_BUTTON, &Panel::on_peg_button_click, this);
 		gs->Add(btn, 0, wxEXPAND);
 	}
@@ -222,10 +227,12 @@ the final result of a previously played game.
 void Panel::on_list_box_click(wxCommandEvent& event) 
 {
 	//1) Write code to get a reference to a vector of boards by calling the manager get_games function
-	std::vector<std::unique_ptr<TicTacToeBoard>>const& boards = manager->get_games();
+	std::vector<unique_ptr<TicTacToeBoard>>const& boards = manager->get_games();
+
 	//2) Write code get a references to one board using the history_list_box GetSelection function as 
 	//   the index for the boards vector
-	std::unique_ptr<TicTacToeBoard>const& board = boards[history_list_box->GetSelection()];
+
+	unique_ptr<TicTacToeBoard>const& board = boards[history_list_box->GetSelection()];
 	
 	wxGridSizer* sizer;
 
@@ -267,17 +274,24 @@ void Panel::set_button_properties(wxGridSizer* sizer)
 	int i = 1;
 	for (auto item : sizer->GetChildren()) 
 	{
-		item->GetWindow()->SetLabel(std::to_string(i));
+		item->GetWindow()->SetLabel(to_string(i));
 		item->GetWindow()->Enable();
 		i++;
 	}
 }
 
+
+
 void Panel::set_winner_labels()
 {
-	int x, o, c;
-	manager->get_winner_totals(x, o, c);
-	//add code here to update winner_label values
+	int x_win_totals, o_win_totals, c_win_totals;
+
+	manager->get_winner_totals(x_win_totals, o_win_totals, c_win_totals);
+
+	x_winner_label -> SetValue(to_string(x_win_totals));
+	o_winner_label -> SetValue(to_string(o_win_totals));
+	c_winner_label -> SetValue(to_string(c_win_totals));
 
 	this->Layout();
+
 }

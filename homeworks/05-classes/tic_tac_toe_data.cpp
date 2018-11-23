@@ -49,7 +49,7 @@ vector<std::unique_ptr<TicTacToeBoard>> TicTacToeData::get_games()
 	return b_vector;
 }
 
-void TicTacToeData::save_pegs(vector<Peg>& p)
+void TicTacToeData::save_pegs(const vector<Peg>& p)
 {
 	ofstream file0;
 

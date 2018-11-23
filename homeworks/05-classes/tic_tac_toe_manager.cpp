@@ -1,6 +1,6 @@
 #include "tic_tac_toe_manager.h"
 
-using std::make_unique;
+using std::make_unique; using std::move;
 
 ostream & operator<<(ostream & out, const TicTacToeManager & m)
 {
@@ -14,6 +14,12 @@ ostream & operator<<(ostream & out, const TicTacToeManager & m)
 		<< "\nO wins: " << m.o_win 
 		<< "\nC wins: " << m.c_win;
 	return out; 
+}
+
+TicTacToeManager::TicTacToeManager()
+{
+
+	boards = tic_tac_toe_data.get_games();
 }
 
 unique_ptr<TicTacToeBoard> TicTacToeManager::get_game(GameType game_type)
@@ -31,7 +37,10 @@ unique_ptr<TicTacToeBoard> TicTacToeManager::get_game(GameType game_type)
 void TicTacToeManager::save_game(unique_ptr<TicTacToeBoard> board)
 {
 	update_winner_count(board->get_winner());
-	boards.push_back(std::move(board));
+
+	tic_tac_toe_data.save_pegs(board -> get_pegs() );
+	
+	boards.push_back(move(board));
 }
 
 const vector<unique_ptr<TicTacToeBoard>>& TicTacToeManager::get_games()
