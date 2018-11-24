@@ -38,7 +38,7 @@ void TicTacToeManager::save_game(unique_ptr<TicTacToeBoard> board)
 {
 	update_winner_count(board->get_winner());
 
-	tic_tac_toe_data.save_pegs(board -> get_pegs() );
+	tic_tac_toe_data.save_pegs(board -> get_pegs() ); //I think this is where it stopped working... when this was added.
 	
 	boards.push_back(move(board));
 }

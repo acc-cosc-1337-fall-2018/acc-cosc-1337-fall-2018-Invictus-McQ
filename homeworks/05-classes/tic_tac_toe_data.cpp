@@ -9,7 +9,6 @@ vector<std::unique_ptr<TicTacToeBoard>> TicTacToeData::get_games()
 	string file_line;
 	//initialize a vector of boards
 	vector<std::unique_ptr<TicTacToeBoard>> b_vector;
-
 	file0.open(file_name);
 
 	while (!file0.eof())
@@ -49,7 +48,7 @@ vector<std::unique_ptr<TicTacToeBoard>> TicTacToeData::get_games()
 	return b_vector;
 }
 
-void TicTacToeData::save_pegs(const vector<Peg>& p)
+void TicTacToeData::save_pegs(const vector<Peg>& p) //I think this is the problem why nothing runs.
 {
 	ofstream file0;
 
