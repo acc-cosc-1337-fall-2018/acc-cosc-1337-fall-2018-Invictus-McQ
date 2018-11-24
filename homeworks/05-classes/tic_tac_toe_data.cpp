@@ -8,7 +8,7 @@ vector<std::unique_ptr<TicTacToeBoard>> TicTacToeData::get_games()
 	ifstream file0;
 	string file_line;
 	//initialize a vector of boards
-	vector<std::unique_ptr<TicTacToeBoard>> b_vector;
+	vector<unique_ptr<TicTacToeBoard>> b_vector;
 	file0.open(file_name);
 
 	while (!file0.eof())
@@ -17,6 +17,7 @@ vector<std::unique_ptr<TicTacToeBoard>> TicTacToeData::get_games()
 		vector<Peg> p;
 		//get a line from file
 		getline(file0, file_line);
+
 		//iterate through the file line to set pegs in the vector
 		for (auto i : file_line)
 		{
@@ -38,7 +39,7 @@ vector<std::unique_ptr<TicTacToeBoard>> TicTacToeData::get_games()
 		else if (p.size() == 16)
 			//create board of TicTacToe4 using make_unique
 			b = make_unique<TicTacToe4>(p);
-		
+
 		//push back the initialized board with the correct game type 
 		//and the initialized vector of pegs from the line in the file.
 		b_vector.push_back(std::move(b));
@@ -54,14 +55,17 @@ void TicTacToeData::save_pegs(const vector<Peg>& p) //I think this is the proble
 
 	//open file
 	file0.open(file_name, std::ios::app);
-	//leave first line blank
-	file0 << "\n";
+	
 
 	//iterate through the vector of pegs to write a line in the file.
 	for (auto i : p)
 	{
 		file0 << i.val;
+		
 	}
-	//close te file
+	
+	//add a "\n" to create a new line
+	file0 << "\n";
+		//close the file
 	file0.close();
 }
