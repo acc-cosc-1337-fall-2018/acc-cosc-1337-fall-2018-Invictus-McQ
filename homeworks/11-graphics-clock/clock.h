@@ -3,6 +3,8 @@
 #include <chrono>
 #include <string>
 
+using std::string;
+
 class Clock
 {
 public:
@@ -10,7 +12,7 @@ public:
 	int get_hours() const;
 	int get_minutes() const;
 	int get_seconds() const;
-	std::string get_time()const;
+	string get_time()const;
 	void update_time();
 private:
 	int seconds;
