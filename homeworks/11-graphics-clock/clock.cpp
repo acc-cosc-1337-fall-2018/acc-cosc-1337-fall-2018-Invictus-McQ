@@ -39,13 +39,24 @@ std::string Clock::get_time() const
 	std::string m;
 	std::string s;
 	std::stringstream ss;
-
-	ss << get_hours();
+	if (get_hours() < 10) {
+		ss.str = "0" + get_hours();
+	}
+	else ss << get_hours();
+	if (ss.str() == "00") {
+		ss.str() = "12";
+	}
 	h = ss.str();
-	ss << get_minutes();
+	if (get_minutes() < 10) {
+		ss.str = "0" + get_minutes();
+	}
+	else ss << get_minutes();
 	m = ss.str();
-	ss << get_seconds();
-	m = ss.str();
+	if (get_seconds() < 10) {
+		ss.str = "0" + get_seconds();
+	}
+	else ss << get_seconds();
+	s = ss.str();
 	string_time = h + ":" + m + ":" + s;
 
 	return string_time;
